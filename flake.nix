@@ -14,8 +14,6 @@
         devShell = pkgs.mkShell {
           name = "rust-shell";
           buildInputs = with pkgs; [
-            althttpd
-          #   libiconv
             cargo
             rustfmt
             rust-analyzer
