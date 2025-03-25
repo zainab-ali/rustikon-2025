@@ -1,0 +1,68 @@
+[package]
+name = "rusty"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3"
+async-std = {version = "1.12.0", features = ["attributes"]}
+futures-timer = "3.0.3"
+async-recursion = "1.0.5"
+
+[[bin]]
+name = "rusty"
+
+[[bin]]
+name = "client"
+
+[[bin]]
+name = "syncplay"
+
+[[bin]]
+name = "selectplay"
+
+[[bin]]
+name = "dyntrait"
+
+[[bin]]
+name = "fuse"
+
+[[bin]]
+name = "partonea"
+
+[[bin]]
+name = "partoneb"
+
+[[bin]]
+name = "partonec"
+
+[[bin]]
+name = "partone"
+
+[[bin]]
+name = "parttwo"
+[[bin]]
+name = "parttwoaaa"
+[[bin]]
+name = "parttwoaa"
+
+
+[[bin]]
+name = "partthree"
+
+[[bin]]
+name = "partfour"
+
+[[bin]]
+name = "partfive"
+
+[[bin]]
+name = "partsix"
+
+[[bin]]
+name = "parttwocancellation"
+
+[[bin]]
+name = "parttwopinbox"
