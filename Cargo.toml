@@ -13,7 +13,7 @@ rand = "0.9.0"
 [[bin]]
 name = "synchronous"
 [[bin]]
-name = "asyncawait"
+name = "async_await"
 [[bin]]
 name = "join"
 [[bin]]
