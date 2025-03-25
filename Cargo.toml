@@ -10,59 +10,25 @@ futures = "0.3"
 async-std = {version = "1.12.0", features = ["attributes"]}
 futures-timer = "3.0.3"
 async-recursion = "1.0.5"
+rand = "0.9.0"
 
+# Introduce the four primitives of asnyc / await
 [[bin]]
-name = "rusty"
-
+name = "synchronous"
 [[bin]]
-name = "client"
-
+name = "asyncawait"
 [[bin]]
-name = "syncplay"
-
+name = "join"
 [[bin]]
-name = "selectplay"
-
+name = "select"
 [[bin]]
-name = "dyntrait"
-
+# Explore sharing state
+name = "shared_spoon_mutex"
 [[bin]]
-name = "fuse"
-
+# A classic deadlock example
+name = "shared_spoon_pan_mutex"
 [[bin]]
-name = "partonea"
-
+# A deadlock solution. This is not yet included in the talk.
+name = "atomic_spoon_pan_mutex"
 [[bin]]
-name = "partoneb"
-
-[[bin]]
-name = "partonec"
-
-[[bin]]
-name = "partone"
-
-[[bin]]
-name = "parttwo"
-[[bin]]
-name = "parttwoaaa"
-[[bin]]
-name = "parttwoaa"
-
-
-[[bin]]
-name = "partthree"
-
-[[bin]]
-name = "partfour"
-
-[[bin]]
-name = "partfive"
-
-[[bin]]
-name = "partsix"
-
-[[bin]]
-name = "parttwocancellation"
-
-[[bin]]
-name = "parttwopinbox"
+name = "actor"
