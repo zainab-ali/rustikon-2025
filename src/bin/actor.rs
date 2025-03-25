@@ -1,10 +1,9 @@
-use async_std::sync::Mutex;
-use futures::channel::mpsc::{Sender, Receiver, channel};
+use futures::channel::mpsc::{channel, Receiver, Sender};
 use futures::FutureExt;
+use futures::*;
 use futures::{join, select};
 use rand::prelude::*;
-use std::{sync::Arc, time::Duration};
-use futures::*;
+use std::time::Duration;
 
 use futures_timer::Delay;
 
@@ -14,7 +13,7 @@ struct Pan;
 enum Message {
     CrackEggs,
     FryEggs,
-    FryBacon
+    FryBacon,
 }
 
 use Message::*;
@@ -37,34 +36,34 @@ async fn chef_actor(mut receiver: Receiver<Message>) {
     let mut pan = Pan;
     while let Some(msg) = receiver.next().await {
         match msg {
-            Message::CrackEggs => crack_eggs(&mut spoon).await,
-            Message::FryEggs => fry_eggs(&mut spoon, &mut pan).await,
-            Message::FryBacon => fry_bacon(&mut spoon, &mut pan).await,
+            CrackEggs => crack_eggs(&mut spoon).await,
+            FryEggs => fry_eggs(&mut spoon, &mut pan).await,
+            FryBacon => fry_bacon(&mut spoon, &mut pan).await,
         }
     }
 }
 
 async fn send_cook_eggs(mut sender: Sender<Message>) {
-    sender.send(Message::CrackEggs).await.unwrap();
-    sender.send(Message::FryEggs).await.unwrap();
+    sender.send(CrackEggs).await.unwrap();
+    sender.send(FryEggs).await.unwrap();
 }
 
 async fn send_fry_bacon(mut sender: Sender<Message>) {
-    sender.send(Message::FryBacon).await.unwrap();
+    sender.send(FryBacon).await.unwrap();
 }
 
-async fn crack_eggs(spoon: &mut Spoon) {
+async fn crack_eggs(_spoon: &mut Spoon) {
     println!("Started cracking egg.");
     random_sleep().await;
     println!("Finished cracking egg.");
 }
 
-async fn fry_eggs(spoon: &mut Spoon, pan: &mut Pan) {
+async fn fry_eggs(_spoon: &mut Spoon, _pan: &mut Pan) {
     println!("Started frying egg.");
     random_sleep().await;
     println!("Finished frying egg.");
 }
-async fn fry_bacon(spoon: &mut Spoon, pan: &mut Pan) {
+async fn fry_bacon(_spoon: &mut Spoon, _pan: &mut Pan) {
     println!("Started frying bacon.");
     let mut timer = Box::pin(timer().fuse());
     let mut crisp_bacon = Box::pin(crisp_bacon().fuse());
@@ -74,7 +73,6 @@ async fn fry_bacon(spoon: &mut Spoon, pan: &mut Pan) {
     }
     println!("Finished frying bacon.");
 }
-
 
 async fn timer() {
     println!("Started timer.");
